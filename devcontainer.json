@@ -1,0 +1,26 @@
+{
+  "name": "Elyra OSINT",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "forwardPorts": [
+    8000
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Elyra OSINT",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt",
+  "postStartCommand": ". .venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": ".venv/bin/python"
+      }
+    }
+  }
+}
